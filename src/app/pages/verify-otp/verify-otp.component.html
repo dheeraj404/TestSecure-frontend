@@ -1,0 +1,29 @@
+<div class="otp-container">
+
+    <div class="otp-card">
+  
+      <h2>OTP Verification</h2>
+  
+      <p class="subtitle">Enter the 6-digit OTP sent to your email</p>
+  
+      <input 
+        type="text" 
+        maxlength="6" 
+        [(ngModel)]="otp" 
+        placeholder="Enter OTP" 
+        class="otp-input"
+      />
+  
+      <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+  
+      <button (click)="verifyOTP()" [disabled]="loading" class="btn">
+        <ng-container *ngIf="!loading">Verify OTP</ng-container>
+        <ng-container *ngIf="loading">
+          <div class="loader"></div>
+        </ng-container>
+      </button>
+  
+    </div>
+  
+  </div>
+  
