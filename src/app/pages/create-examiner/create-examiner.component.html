@@ -1,0 +1,62 @@
+<div class="examiner-form-container">
+    <h2>Create Examiner</h2>
+  
+    <form (ngSubmit)="onSubmit(examinerForm)" #examinerForm="ngForm">
+  
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          ngModel
+          required
+          placeholder="Enter examiner name"
+        />
+      </div>
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          required
+          placeholder="example@mail.com"
+        />
+      </div>
+  
+      <!-- Subject -->
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          ngModel
+          required
+          placeholder="Eg: Mathematics, Physics"
+        />
+      </div>
+  
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          ngModel
+          required
+          placeholder="Create a strong password"
+        />
+      </div>
+  
+      <button type="submit" class="submit-btn">Create Examiner</button>
+      
+    </form>
+  </div>
+  
