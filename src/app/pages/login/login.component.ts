@@ -28,44 +28,50 @@ export class LoginComponent {
     this.errorMessage = '';
   }
 
-  login() {
-    this.showError = false;
-    this.errorMessage = '';
+  showPassword: boolean = false;
 
-    if (!this.email || !this.password) {
-      this.showError = true;
-      return;
-    }
+togglePassword() {
+  this.showPassword = !this.showPassword;
+}
 
-    this.isLoading = true;
+login() {
+  this.showError = false;
+  this.errorMessage = '';
 
-    if (this.role === 'admin') {
-      this.apiservice.loginAdmin(this.email, this.password).subscribe({
-        next: (res) => {
-          console.log('Admin logged in successfully', res);
-          this.apiservice.saveAuthData(res.token, res.id, res.role);
-          this.router.navigate(['/admin/dashboard']);
-        },
-        error: (error) => {
-          console.error('Admin login failed', error);
-          this.errorMessage = 'Login failed. Please check your credentials.';
-          this.isLoading = false;
-        }
-      });
-    } else if (this.role === 'examiner') {
-      this.apiservice.loginExaminer(this.email, this.password).subscribe({
-        next: (res) => {
-          console.log('Examiner logged in successfully', res);
-          this.apiservice.saveAuthData(res.token, res.id, res.role);
-          this.apiservice.Saveusername(res.name);
-          this.router.navigate(['/examiner/dashboard']);
-        },
-        error: (error) => {
-          console.error('Examiner login failed', error);
-          this.errorMessage = 'Login failed. Please check your credentials.';
-          this.isLoading = false;
-        }
-      });
-    }
+  if (!this.email || !this.password) {
+    this.showError = true;
+    this.errorMessage = 'Email and password are required.';
+    return;
   }
+
+  this.isLoading = true;
+
+  if (this.role === 'admin') {
+    this.apiservice.loginAdmin(this.email, this.password).subscribe({
+      next: (res) => {
+        this.apiservice.saveAuthData(res.token, res.id, res.role);
+        this.router.navigate(['/admin/dashboard']);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.errorMessage = error.error?.error || "Invalid credentials";
+        this.showError = true;
+      }
+    });
+  }
+
+  if (this.role === 'examiner') {
+    this.apiservice.loginExaminer(this.email, this.password).subscribe({
+      next: (res) => {
+        this.apiservice.saveAuthData(res.token, res.id, res.role);
+        this.apiservice.Saveusername(res.name);
+        this.router.navigate(['/examiner/dashboard']);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.errorMessage = error.error?.error || "Invalid credentials";
+        this.showError = true;
+      }
+    });
+  }}
 }

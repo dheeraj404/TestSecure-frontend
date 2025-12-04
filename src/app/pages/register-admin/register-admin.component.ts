@@ -16,7 +16,8 @@ export class RegisterAdminComponent implements OnInit {
 
   registerForm!: FormGroup;
   loading = false;
-
+  err=false;
+  errmsg:any;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -63,6 +64,8 @@ export class RegisterAdminComponent implements OnInit {
         });
       },
       error: (error) => {
+        this.err=true;
+        this.errmsg=error.error.error;
         this.loading = false;
         console.error("Registration failed", error);
       }

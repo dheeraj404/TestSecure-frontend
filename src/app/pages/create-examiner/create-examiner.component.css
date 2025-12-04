@@ -61,6 +61,11 @@
   .submit-btn:hover {
     background: #1976d2;
   }
+  .error {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+  }
   
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

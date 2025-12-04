@@ -12,8 +12,10 @@
           name="name"
           ngModel
           required
+          #name="ngModel"
           placeholder="Enter examiner name"
         />
+        <p class="error" *ngIf="name.invalid && name.touched">Name is required</p>
       </div>
   
       <!-- Email -->
@@ -25,8 +27,11 @@
           name="email"
           ngModel
           required
+          email
+          #email="ngModel"
           placeholder="example@mail.com"
         />
+        <p class="error" *ngIf="email.invalid && email.touched">Valid Email is required</p>
       </div>
   
       <!-- Subject -->
@@ -38,8 +43,10 @@
           name="subject"
           ngModel
           required
+          #subject="ngModel"
           placeholder="Eg: Mathematics, Physics"
         />
+        <p class="error" *ngIf="subject.invalid && subject.touched">Subject is required</p>
       </div>
   
       <!-- Password -->
@@ -51,12 +58,20 @@
           name="password"
           ngModel
           required
+          minlength="6"
+          #password="ngModel"
           placeholder="Create a strong password"
         />
+        <p class="error" *ngIf="password.invalid && password.touched">
+          Password is required (min 6 characters)
+        </p>
       </div>
   
+      <!-- ERROR BELOW BUTTON -->
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  
       <button type="submit" class="submit-btn">Create Examiner</button>
-      
+  
     </form>
   </div>
   

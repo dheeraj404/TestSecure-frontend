@@ -77,7 +77,14 @@
     background: #8cb5ff;
     cursor: not-allowed;
   }
-  
+  .error-box {
+    background: #ffdddd;
+    color: #d60000;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
   /* Loader Animation */
   .loader {
     border: 3px solid #fff;
