@@ -57,6 +57,7 @@ export class LoginComponent {
         next: (res) => {
           console.log('Examiner logged in successfully', res);
           this.apiservice.saveAuthData(res.token, res.id, res.role);
+          this.apiservice.Saveusername(res.name);
           this.router.navigate(['/examiner/dashboard']);
         },
         error: (error) => {

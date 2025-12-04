@@ -1,1 +1,48 @@
-<p>upload-paper works!</p>
+<!-- upload-paper.component.html -->
+<div class="form-container">
+
+    <h2>Upload Question Paper</h2>
+  
+    <div class="form-group">
+      <label>Paper Title</label>
+      <input class="form-control" [(ngModel)]="title" placeholder="Enter paper title">
+    </div>
+  
+    <div class="form-group">
+      <label>Exam Date</label>
+      <input type="date" class="form-control" [(ngModel)]="examDate">
+    </div>
+  
+    <div class="form-group">
+      <label>Exam Time (24-hour format)</label>
+      <!-- keep ngModel for two-way binding, but also normalize on change -->
+      <input
+        type="time"
+        class="form-control"
+        [(ngModel)]="examTime"
+        (change)="onTimeChange($event)"
+        step="60"
+        placeholder="HH:mm">
+      <!-- show normalized value below for clarity (optional) -->
+      <small class="hint" *ngIf="examTime">Stored time: {{ examTime }}</small>
+    </div>
+  
+    <div class="form-group">
+      <label>Select Examiner</label>
+      <select class="form-control" [(ngModel)]="examinerId">
+        <option value="" disabled selected>Select Examiner</option>
+        <option *ngFor="let ex of examiners" [value]="ex.id">
+          {{ ex.name }} — {{ ex.subject }}
+        </option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label>Upload PDF</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)" accept="application/pdf">
+    </div>
+  
+    <button class="btn-submit" (click)="upload()">Upload</button>
+  
+  </div>
+  

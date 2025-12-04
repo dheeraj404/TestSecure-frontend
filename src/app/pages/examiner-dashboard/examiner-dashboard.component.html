@@ -1,1 +1,65 @@
-<p>examiner-dashboard works!</p>
+<div class="dashboard-container">
+
+    <!-- Top Header -->
+    <div class="header">
+      <div class="welcome-text">
+        Welcome, <b>{{ username }}</b>
+      </div>
+  
+      <!-- Profile dropdown -->
+      <div class="profile" (click)="showMenu = !showMenu">
+        <div class="profile-circle">{{ username[0] }}</div>
+  
+        <div class="dropdown" *ngIf="showMenu">
+          <div class="dropdown-item username">
+            <span class="profile-circle small">{{ username[0] }}</span>
+            <span>{{ username }}</span>
+          </div>
+  
+          <div class="divider"></div>
+  
+          <div class="dropdown-item" (click)="logout()">
+            <span class="logout">⟲ Logout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Table -->
+    <div class="card">
+      <h3 class="title">Examiner Papers</h3>
+  
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Exam Date</th>
+            <th>Exam Time</th>
+            <th>Status</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let paper of listofPapers">
+            <td>{{ paper.title }}</td>
+            <td>{{ paper.examDate }}</td>
+            <td>{{ paper.examTime }}</td>
+  
+            <td class="status">You can only download 30 min before exam</td>
+  
+            <td>
+              <button class="btn-download"
+                [class.disabled]="!canDownload(paper.examDate, paper.examTime)"
+                [disabled]="!canDownload(paper.examDate, paper.examTime)"
+                (click)="downloadPaper(paper.id)">
+                ⬇ Download
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+  

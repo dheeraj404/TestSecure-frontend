@@ -6,6 +6,7 @@ import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
 import { RoleGuard } from './ guards/role.guard';
 import { AdminDashboardComponentComponent } from './pages/admin-dashboard-component/admin-dashboard-component.component'
 import { ExaminerDashboardComponent } from './pages/examiner-dashboard/examiner-dashboard.component';
+import { ExaminerDetailsComponent } from './pages/examiner-details/examiner-details.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
@@ -24,6 +25,12 @@ export const routes: Routes = [
         component: ExaminerDashboardComponent,
         canActivate: [RoleGuard],
         data: { role: "EXAMINER" }
-      }
+      },
+     { path: 'examiner-details/:id',
+      component: ExaminerDetailsComponent,
+      canActivate: [RoleGuard],
+      data: { role: "ADMIN" }
+
+    }
 
   ];

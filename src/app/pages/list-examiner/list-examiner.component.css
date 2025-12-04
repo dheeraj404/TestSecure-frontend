@@ -1,0 +1,82 @@
+.container {
+    max-width: 1100px;
+    margin: auto;
+  }
+  
+  /* Heading */
+  h3 {
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #1976d2;
+  }
+  
+  /* TABLE */
+  table {
+    width: 100%;
+    table-layout: fixed;   /* ← Ensures all columns align */
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Header */
+  thead tr {
+    background: #1976d2;
+    color: white;
+    font-size: 16px;
+  }
+  
+  th, td {
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  /* FIX COLUMN WIDTHS */
+  th:nth-child(1), td:nth-child(1) { width: 6%; text-align: center; }
+  th:nth-child(2), td:nth-child(2) { width: 28%; }
+  th:nth-child(3), td:nth-child(3) { width: 20%; }
+  th:nth-child(4), td:nth-child(4) { width: 32%; }
+  th:nth-child(5), td:nth-child(5) { width: 14%; text-align: center; }
+  
+  /* WRAP long text like email */
+  td {
+    word-wrap: break-word;
+  }
+  
+  /* Body rows */
+  tbody tr {
+    background: #fff;
+    transition: background 0.25s ease-in-out, transform 0.15s;
+  }
+  
+  tbody tr:hover {
+    background: #e8f1fc;
+    transform: scale(1.01);
+  }
+  
+  /* Button */
+  .btn-primary {
+    background: #1976d2;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background: #135db1;
+    transform: translateY(-2px);
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 650px) {
+    table {
+      table-layout: auto;
+    }
+  }
+  

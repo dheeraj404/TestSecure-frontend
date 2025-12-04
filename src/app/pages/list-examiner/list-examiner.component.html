@@ -1,1 +1,32 @@
-<p>list-examiner works!</p>
+<div class="container mt-4">
+    <h3>Examiner List</h3>
+  
+    <table class="table table-striped table-bordered mt-3">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>Email</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let item of examiners; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.subject }}</td>
+          <td>{{ item.email }}</td>
+  
+          <td>
+            <button class="btn btn-primary btn-sm"
+                    (click)="openDetails(item.id)">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -30,13 +30,29 @@ export class ApiService {
   CreateExaminer(data:any):Observable<any>{
     return this.http.post<any>(`${this.baseUrl}admin/examiner/create`, data);
   }
-
+  ExaminerList():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}admin/examiner`);
+  }
+  uploadPaper(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}admin/upload-paper`, formData);
+  }
+  getPapersForExaminer():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}examiner/papers`);
+  }
+  downloadPaper(paperId: number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}examiner/download-paper/${paperId}`, { responseType: 'blob' });
+  }
   saveAuthData(token: string, id: number, role: string) {
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
     localStorage.setItem("id", id.toString());
   }
-
+  Saveusername(username: string) {
+    localStorage.setItem("username", username);
+  }
+    getUsername() {
+    return localStorage.getItem("username");
+  }
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
