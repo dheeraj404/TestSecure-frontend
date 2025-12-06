@@ -62,7 +62,6 @@ src/
  │    ├── examiner/           # Examiner dashboard
  │    ├── services/           # API services (Auth, Admin, Examiner)
  │    ├── guards/             # Auth & Role guards
- │    ├── models/             # Interfaces for User, Paper, etc.
  │    └── app-routing.module.ts
  │
  └── assets/
