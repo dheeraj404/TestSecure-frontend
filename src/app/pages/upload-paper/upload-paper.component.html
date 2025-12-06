@@ -43,6 +43,9 @@
     </div>
   
     <button class="btn-submit" (click)="upload()">Upload</button>
+    <div *ngIf="errorMessage" class="error-box">
+        {{ errorMessage }}
+      </div>
   
   </div>
   

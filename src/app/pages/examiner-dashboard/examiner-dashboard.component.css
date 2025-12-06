@@ -147,4 +147,13 @@
     background: #b4c7da;
     cursor: not-allowed;
   }
+  .error-box {
+    background: #d9534f;
+    color: white;
+    padding: 10px 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+  }
   

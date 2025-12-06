@@ -18,6 +18,7 @@ export class UploadPaperComponent implements OnInit {
   examinerId: number | null = null;
   file: File | null = null;
   examiners: any[] = [];
+  errorMessage: any;
 
   constructor(private apiService: ApiService) {}
 
@@ -118,8 +119,11 @@ export class UploadPaperComponent implements OnInit {
 
       },
       error: (error) => {
-        console.error('Error uploading exam paper', error);
-        alert('Error uploading exam paper');
+        if (error.error && error.error.error) {
+          this.errorMessage = error.error.error;   // <-- use error.error.error
+        } else {
+          this.errorMessage = 'Something went wrong while uploading';
+        }
       }
     });
   }

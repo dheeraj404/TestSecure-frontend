@@ -57,4 +57,13 @@
   .btn-submit:hover {
     background-color: #125a9c;
   }
+  .error-box {
+    margin-top: 10px;
+    color: white;
+    background: #d9534f;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+  }
   

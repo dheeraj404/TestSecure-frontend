@@ -10,6 +10,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './examiner-dashboard.component.css'
 })
 export class ExaminerDashboardComponent implements OnInit {
+  errorMessage: any;
 
   constructor(private apiService: ApiService) {}
 username :any;
@@ -57,7 +58,11 @@ username :any;
         window.URL.revokeObjectURL(url);
       },
       error: (error) => {
-        console.error("Download failed", error);
+        if (error.error && error.error.error) {
+          this.errorMessage = error.error.error;   // backend returns { error: "msg" }
+        } else {
+          this.errorMessage = "Failed to load papers";
+        }
       }
     });
   }

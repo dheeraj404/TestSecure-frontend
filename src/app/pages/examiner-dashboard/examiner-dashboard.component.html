@@ -55,6 +55,10 @@
                 (click)="downloadPaper(paper.id)">
                 ⬇ Download
               </button>
+              <div *ngIf="errorMessage" class="error-box">
+                {{ errorMessage }}
+              </div>
+              
             </td>
           </tr>
         </tbody>
